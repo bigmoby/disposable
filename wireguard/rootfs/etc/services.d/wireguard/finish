@@ -1,0 +1,18 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Z-Wave JS to MQTT
+# Take down the S6 supervision tree when zwavejs2mqtt fails
+# ==============================================================================
+declare interface
+bashio::log.info "Stopping WireGuard Client..."
+
+# Get the interface
+interface="wg0"
+
+# Stop the WireGuard
+exec wg-quick down "${interface}"
+
+if -n { s6-test $# -ne 0 }
+if -n { s6-test ${1} -eq 256 }
+
+s6-svscanctl -t /var/run/s6/services
