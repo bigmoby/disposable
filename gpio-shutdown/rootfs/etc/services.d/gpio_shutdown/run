@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Bigmoby Party Add-on: GPIO Shutdown
+# Creates the interface configuration
+# ==============================================================================
+
+declare shutdownButtonPin
+
+bashio::log.info "Starting GPIO Shutdown..."
+
+if ! bashio::config.has_value 'shutdown_button_pin'; then
+    bashio::exit.nok 'You must define a shutdown_button_pin'
+else
+    shutdownButtonPin=$(bashio::config 'shutdown_button_pin')
+     bashio::log.info "Shutdown button has been defined for GPIO pin [${shutdownButtonPin}]"
+fi
+
+bashio::log.info "Ended to init GPIO Shutdown service]"
+
+# Detached run
+exec /usr/local/bin/gpio-halt shutdownButtonPin &

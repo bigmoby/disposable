@@ -9,8 +9,16 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
-        openresolv=3.10.0-r0 \
-        wireguard-tools=1.0.20200510-r0 
+        build-base=0.5-r2 \
+        git=2.26.2-r0 \
+    \
+    && git clone --branch "master" "https://github.com/adafruit/Adafruit-GPIO-Halt" /tmp/adafruit-gpio \
+    \
+    && cd /tmp/adafruit-gpio \
+    && make \
+    && make install \
+    \
+    && rm -f -r /tmp/* 
 
 # Copy root filesystem
 COPY rootfs /
@@ -23,20 +31,20 @@ ARG BUILD_VERSION
 
 # Labels
 LABEL \
-    io.hass.name="WireGuard Client" \
-    io.hass.description="Fast, modern, secure VPN tunnel (Client)" \
+    io.hass.name="GPIO Shutdown" \
+    io.hass.description="Home Assistant GPIO add-on to support shutdown or reboot command" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Fabio Bigmoby Mauro <https://github.com/bigmoby>" \
-    org.opencontainers.image.title="WireGuard Client" \
-    org.opencontainers.image.description="Fast, modern, secure VPN tunnel" \
-    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
+    org.opencontainers.image.title="GPIO Shutdown" \
+    org.opencontainers.image.description="Home Assistant GPIO add-on to support shutdown or reboot command" \
+    org.opencontainers.image.vendor="Home Assistant Bigmoby Add-ons" \
     org.opencontainers.image.authors="Fabio Bigmoby Mauro <https://github.com/bigmoby>" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://addons.community" \
-    org.opencontainers.image.source="https://github.com/bigmoby/addon-wireguard-client" \
-    org.opencontainers.image.documentation="https://github.com/bigmoby/addon-wireguard-client/blob/master/README.md" \
+    org.opencontainers.image.source="https://github.com/bigmoby/addon-gpio-shutdown" \
+    org.opencontainers.image.documentation="https://github.com/bigmoby/addon-gpio-shutdown/blob/master/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION}

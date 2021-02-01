@@ -1,5 +1,5 @@
 {
-    "name":"Hassio Wireguard Client addons by Bigmoby",
-    "url":"https://github.com/bigmoby/addon-wireguard-client",
+    "name":"Home Assistant Bigmoby Add-ons",
+    "url":"https://github.com/bigmoby/addon-gpio-shutdown",
     "maintainer":"Fabio Bigmoby Mauro <https://github.com/bigmoby>"
- }
+}
