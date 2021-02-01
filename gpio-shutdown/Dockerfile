@@ -6,17 +6,17 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
-    sudo apt-get update \
+    apt-get update \
     \
-    && sudo apt-get install git libraspberrypi-dev raspberrypi-kernel-headers \
+    && apt-get install git libraspberrypi-dev raspberrypi-kernel-headers \
     \
     && git clone --branch "master" "https://github.com/adafruit/Adafruit-GPIO-Halt" /tmp/adafruit-gpio \
     \
     && cd /tmp/adafruit-gpio \
     && make \
-    && sudo make install \
+    && make install \
     \
-    && sudo rm -f -r /tmp/* 
+    && rm -f -r /tmp/* 
 
 # Copy root filesystem
 COPY rootfs /
