@@ -21,9 +21,13 @@
      "SYS_RAWIO"
    ],
    "options": {
-      "shutdown_button_pin": 4
+      "shutdown_button_pin": 4,
+      "shutdown_trigger_level": 1,
+      "pause_before_shutdown_secs": 5
     },
     "schema": {
-      "shutdown_button_pin": "int(1,27)"
+      "shutdown_button_pin": "int(1,27)",
+      "shutdown_trigger_level": "int(0,1)",
+      "pause_before_shutdown_secs": "int(0,1000)"
     }
  }
