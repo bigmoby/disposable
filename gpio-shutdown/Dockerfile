@@ -20,7 +20,9 @@ RUN \
     && make \
     && make install \
     \
-    && rm -f -r /tmp/* 
+    && rm -f -r /tmp/* \
+    \
+    && apk add raspberrypi-libs
 
 # Copy root filesystem
 COPY rootfs /
