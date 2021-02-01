@@ -1,18 +1,14 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.6
-# hadolint ignore=DL3006
+ARG BUILD_FROM=hassioaddons/debian-base:3.2.3
+
 FROM ${BUILD_FROM}
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Setup base
-# hadolint ignore=DL3003
 RUN \
-    apk add --no-cache \
-        build-base=0.5-r2 \
-        raspberrypi-dev \
-        raspberrypi-libs \
-        git=2.26.2-r0 \
+    apt update \
+    \
+    && apt install git libraspberrypi-dev raspberrypi-kernel-headers \
     \
     && git clone --branch "master" "https://github.com/adafruit/Adafruit-GPIO-Halt" /tmp/adafruit-gpio \
     \
@@ -20,9 +16,7 @@ RUN \
     && make \
     && make install \
     \
-    && rm -f -r /tmp/* \
-    \
-    && apk add raspberrypi-libs
+    && rm -f -r /tmp/* 
 
 # Copy root filesystem
 COPY rootfs /
