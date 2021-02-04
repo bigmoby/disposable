@@ -8,7 +8,7 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-    coreutils=8.32-r2
+    coreutils
 
 # Scrip to run after startup
 CMD ["/usr/bin/run.sh"]
