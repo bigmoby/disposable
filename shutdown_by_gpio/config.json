@@ -6,7 +6,7 @@
   "url": "https://github.com/ozbotics/hassio-addon-shutdown-by-gpio",
   "startup": "initialize",
   "arch": [
-      "armv7"
+      "armv7", "armhf"
   ],
   "boot": "auto",
   "hassio_api": true,
