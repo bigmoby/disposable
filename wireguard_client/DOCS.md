@@ -1,8 +1,4 @@
-# Home Assistant Bigmoby Add-on: WireGuard Client
-
-WireGuard: fast, modern, secure VPN tunnel.
-
-## About
+# Home Assistant Community Add-on: WireGuard Client
 
 [WireGuard®][wireguard] is an extremely simple yet fast and modern VPN that
 utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner,
@@ -19,31 +15,6 @@ including via an Hass.io add-on!
 WireGuard is currently under heavy development, but already it might be
 regarded as the most secure, easiest to use, and the simplest VPN solution
 in the industry.
-
-## Breaking Changes
-
-* __New repository url__
-
-From version ___0.1.0___ will be dismissed the current repository and this will be the new repository url: 
-
-```text
-https://github.com/bigmoby/hassio-repository-addon
-```
-
-* __Docker Hub pre-build add-on__
-
-Update migration process from version ___0.0.3-SNAPSHOT___ to version ___0.0.4-SNAPSHOT___ fails because of new Docker Hub pre-build support.
-__SO YOU MUST REMOVE AND INSTALL THE NEW ADD-ON VERSION__ ___MANUALLY.___
-
-## Contributing
-
-This is an active open-source project. We are always open to people who want to
-use the code or contribute to it.
-
-We have set up a separate document containing our
-[contribution guidelines](CONTRIBUTING.md).
-
-Thank you for being involved! :heart_eyes:
 
 ## Sponsor
 
@@ -64,11 +35,48 @@ Project forked from [Wireguard add-on][original_project].
 For a full list of all authors and contributors,
 check [the contributor's page][contributors].
 
+## Installation
+
+WireGuard Client add-on is pretty simple, however, can be quite complex for user that isn't
+familiar with all terminology used. The add-on takes care of a lot of things
+for you (if you want).
+
+Follow the following steps for installation & a quick start:
+
+1. Search for the "WireGuard Client" add-on in the Supervisor add-on store
+   and install it.
+1. use the following configuration as example: 
+
+```yaml
+interface:
+  private_key: your-private-key
+  address: 10.6.0.2
+  dns:
+    - 8.8.8.8
+    - 8.8.4.4
+peer:
+  public_key: your-public-key=
+  pre_shared_key: your-preshared-key
+  endpoint: 'xxxxxxxxxxxxxxx.duckdns.org:51820'
+  allowed_ips:
+    - 10.6.0.0/24
+  persistent_keep_alive: 25
+```
+
+1. Save the configuration.
+1. Start the "WireGuard" add-on
+
+## Authors & contributors
+
+The original setup of this repository is by [Fabio Mauro][bigmoby].
+
+This is a fork of Wireguard Add-on 
+
 ## License
 
 MIT License
 
-Copyright (c) 2020 Fabio Mauro
+Copyright (c) 2020-2021 Fabio Mauro
 
 Copyright (c) 2019-2020 Franck Nijhof
 
@@ -90,27 +98,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
+[bigmoby]: https://github.com/bigmoby
+[wireguard]: https://www.wireguard.com
 [original_project]: https://github.com/hassio-addons/addon-wireguard
 [contributors]: https://github.com/bigmoby/addon-wireguard-client/graphs/contributors
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-wireguard.svg
-[commits]: https://github.com/hassio-addons/addon-wireguard/commits/master
-[discord-ha]: https://discord.gg/c5DvZ4e
-[discord-shield]: https://img.shields.io/discord/478094546522079232.svg
-[discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/bigmoby/addon-wireguard-client/blob/master/wireguard/DOCS.md
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
-[issue]: https://github.com/hassio-addons/addon-wireguard/issues
-[license-shield]: https://img.shields.io/github/license/hassio-addons/addon-wireguard.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
-[patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
-[patreon]: https://www.patreon.com/frenck
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[reddit]: https://reddit.com/r/homeassistant
-[releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-wireguard.svg
-[repository]: https://github.com/hassio-addons/repository
-[wireguard]: https://www.wireguard.com

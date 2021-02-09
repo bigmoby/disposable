@@ -1,6 +1,0 @@
-{
-  "build_from": {
-    "armhf": "hassioaddons/base-armhf:8.0.6",
-    "armv7": "hassioaddons/base-armv7:8.0.6"
-  }
-}
