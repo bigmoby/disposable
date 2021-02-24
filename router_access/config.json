@@ -1,6 +1,6 @@
 {
    "name":"Router Access",
-   "version":"0.1.8",
+   "version":"0.1.9",
    "slug":"router_access",
    "description":"A simple tool to access a router webpage (http) inside your LAN",
    "url":"https://github.com/bigmoby/disposable",
@@ -11,7 +11,8 @@
       "armv7",
       "i386"
    ],
-   "ingress": false,
+   "ingress": true,
+   "ingress_port": 80,
    "apparmor": false,
    "host_network": true,
    "init":false,
