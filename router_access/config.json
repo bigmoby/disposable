@@ -11,8 +11,7 @@
       "armv7",
       "i386"
    ],
-   "ingress": true,
-   "ingress_port": 0,
+   "ingress": false,
    "apparmor": false,
    "host_network": true,
    "init":false,
