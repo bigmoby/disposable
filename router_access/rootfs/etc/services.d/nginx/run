@@ -1,8 +1,11 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Home Assistant Community Add-on: WireGuard Client
-# Shows current WireGuard status
+# Home Assistant Community Add-on: motionEye
+# Runs the Nginx daemon
 # ==============================================================================
-sleep 30
-bashio::log.info "Requesting current status from WireGuard Client..."
-exec wg show
+
+# Wait for motionEye to be available
+bashio::net.wait_for 80
+
+bashio::log.info "Starting NGinx..."
+exec nginx

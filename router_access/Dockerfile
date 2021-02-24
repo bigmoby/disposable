@@ -9,8 +9,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache \
-        openresolv=3.12.0-r0 \
-        wireguard-tools=1.0.20200827-r1 
+        nginx=1.18.0-r13 
 
 # Copy root filesystem
 COPY rootfs /
